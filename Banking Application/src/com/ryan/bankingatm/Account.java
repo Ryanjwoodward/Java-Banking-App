@@ -11,7 +11,7 @@ public class Account {
 	/**
 	 * 
 	 */
-	private ArrayList<Transaction> transactions;
+	private ArrayList<Transactions> transactions;
 	
 	/**
 	 * Create a new Account object
@@ -28,7 +28,7 @@ public class Account {
 		this.uuid = theBank.getNewAccountUUID();
 		
 		//init transactions
-		this.transactions = new ArrayList<Transaction>();
+		this.transactions = new ArrayList<Transactions>();
 		
 		/*//add account to holder and bank lists
 		//below objects will be the stored as address to same object in memory
@@ -78,7 +78,7 @@ public class Account {
 	public void addTransaction(double amount, String memo) {
 		
 		//create a new Transaction obj and add to list
-		Transaction newTransaction = new Transaction(amount, memo, this);
+		Transactions newTransaction = new Transactions(amount, memo, this);
 		
 		this.transactions.add(newTransaction);
 	}
@@ -104,7 +104,7 @@ public class Account {
 	public double getBalance() {
 		
 		double balance = 0;
-		for(Transaction t: this.transactions) {
+		for(Transactions t: this.transactions) {
 			
 			balance += t.getAmount();
 		}
