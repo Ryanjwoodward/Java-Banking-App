@@ -49,7 +49,7 @@ public class Account {
 		//format the summary line, depending on whether the balance is negative
 		if(balance >= 0) {
 			
-			return String.format("%s : $%.02f : s", this.uuid, balance, this.name);
+			return String.format("%s : $%.02f : %s", this.uuid, balance, this.name);
 		}else {
 			
 			return String.format("%s : $(%.02f) : %s", this.uuid, balance, this.name);
@@ -68,6 +68,19 @@ public class Account {
 		}
 		
 		System.out.println();
+	}
+	
+	/**
+	 * Add a new Transaction in this account 
+	 * @param amount		the amount transacted
+	 * @param memo			the transaction memo
+	 */
+	public void addTransaction(double amount, String memo) {
+		
+		//create a new Transaction obj and add to list
+		Transaction newTransaction = new Transaction(amount, memo, this);
+		
+		this.transactions.add(newTransaction);
 	}
 	
 	

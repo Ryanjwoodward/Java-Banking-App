@@ -70,7 +70,7 @@ public class User {
 	 */
 	public void printAccountsSummary() {
 		
-		System.out.printf("\n\n%s's accounts summary", this.firstName);
+		System.out.printf("\n\n%s's accounts summary:\n", this.firstName);
 		for(int idx = 0; idx < this.accounts.size(); idx++) {
 			
 			System.out.printf("%d) %s\n", idx+1, this.accounts.get(idx).getSummaryLine());
@@ -99,9 +99,18 @@ public class User {
 		return false; //this is the merely appease java as it will work or throw exception
 	}
 	
+	/**
+	 * Print Transaction history for a particular account
+	 * @param acctIdx		the index of the account to use
+	 */
 	public void printAcctTransactionHistory(int acctIdx) {
 		
 		this.accounts.get(acctIdx).printTransactionHistory();
+	}
+	
+	public void addAccountTransaction(int acctIdx, double amount, String memo) {
+		
+		this.accounts.get(acctIdx).addTransaction(amount, memo);
 	}
 	
 	//*******************************************
@@ -141,6 +150,16 @@ public class User {
 	public double getAccountBalance(int acctIdx) {
 		
 		return this.accounts.get(acctIdx).getBalance();
+	}
+	
+	/**
+	 * Get the UUID of a particular account with index from arraylist of accounts
+	 * @param acctIdx		the index of the account to use
+	 * @return				the UUID of the account
+	 */
+	public String getAccountUUID(int acctIdx) {
+		
+		return this.accounts.get(acctIdx).getUUID();
 	}
 	
 	
